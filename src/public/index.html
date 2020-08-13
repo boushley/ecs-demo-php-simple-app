@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <h1>Boushley node v5</h1>
+
+<script>
+  fetch('/server').then(response => {
+    return response.text()
+    }).then(publicIp => {
+      console.log('Got Ip', publicIp)
+      var url = `ws://${publicIp}/bar`
+      var i = 0
+      var webSocket = new WebSocket(url)
+      webSocket.addEventListener('open', () => {
+        console.log('Socket Opened')
+        webSocket.send('open')
+      })
+      webSocket.addEventListener('message', (event) => {
+        console.log('Received Event:', event.data)
+        setTimeout(() => {
+          webSocket.send('client ' + i++)
+        }, 500)
+      })
+    })
+</script>
+  </body>
+</html>
