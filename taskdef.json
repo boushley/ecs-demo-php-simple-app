@@ -1,5 +1,6 @@
 {
   "executionRoleArn": "arn:aws:iam::755555083244:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::755555083244:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "name": "node-server-container",
